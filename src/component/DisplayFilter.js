@@ -1,4 +1,7 @@
-function DisplayFilter() {
+function DisplayFilter({ search, setSearch }) {
+  const handleChange = (e) =>
+    setSearch({ ...search, [e.target.name]: e.target.value });
+  const handleClick = (e) => setSearch({ ...search, [e.target.name]: "" });
   return (
     <div className="mt-4">
       <div className="row g-3">
@@ -6,40 +9,54 @@ function DisplayFilter() {
           <div className="input-group">
             <input
               type="text"
+              name="text"
+              value={search.text}
+              onChange={handleChange}
               className="form-control form-control-sm"
               placeholder="Enter to search"
             />
-            <button className="btn btn-sm btn-outline-light">x</button>
+            <button name="text" onClick={handleClick} className="btn btn-sm btn-outline-light">x</button>
           </div>
         </div>
         <div className="col-sm-3">
           <div className="input-group">
-            <select className="form-select form-select-sm">
+            <select
+              name="month"
+              value={search.month}
+              onChange={handleChange}
+              className="form-select form-select-sm"
+            >
               <option value="">Month</option>
-              <option value="">Jan</option>
-              <option value="">Feb</option>
-              <option value="">Mar</option>
-              <option value="">Apr</option>
-              <option value="">May</option>
-              <option value="">Jun</option>
-              <option value="">Jul</option>
-              <option value="">Aug</option>
-              <option value="">Sep</option>
-              <option value="">Oct</option>
-              <option value="">Nov</option>
-              <option value="">Dec</option>
+              <option value="01">Jan</option>
+              <option value="02">Feb</option>
+              <option value="03">Mar</option>
+              <option value="04">Apr</option>
+              <option value="05">May</option>
+              <option value="06">Jun</option>
+              <option value="07">Jul</option>
+              <option value="08">Aug</option>
+              <option value="09">Sep</option>
+              <option value="10">Oct</option>
+              <option value="11">Nov</option>
+              <option value="12">Dec</option>
             </select>
-            <button className="btn btn-sm btn-outline-light">x</button>
+            <button name="month" onClick={handleClick} className="btn btn-sm btn-outline-light">x</button>
           </div>
         </div>
         <div className="col-sm-3">
           <div className="input-group">
-            <select className="form-select form-select-sm">
+            <select
+              name="year"
+              value={search.year}
+              onChange={handleChange}
+              className="form-select form-select-sm"
+            >
               <option value="">Year</option>
-              <option value="">2021</option>
-              <option value="">2020</option>
+              <option value="2022">2022</option>
+              <option value="2021">2021</option>
+              <option value="2020">2020</option>
             </select>
-            <button className="btn btn-sm btn-outline-light">x</button>
+            <button name="year" onClick={handleClick} className="btn btn-sm btn-outline-light">x</button>
           </div>
         </div>
       </div>
